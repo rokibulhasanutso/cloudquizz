@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- css link -->
+    <link rel="stylesheet" href="./assets/css/main.css"> <!-- mandatory-->
+    <link rel="stylesheet" href="./assets/css/user/registration-login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+   <div id="mainDiv">
+    <div>
+        <img src="/main/assets/image/login.jpg" alt="login page image">
+    </div>
+
+    <div id="login_section">
+        <div class="login_box_header">
+            <h1>Welcome Back!</h1>
+            <h2>Sign in to the 
+                <!-- logo div tag -->
+                <div style="display: inline-block;">
+                    <span style="
+                        font-family: Prompt;
+                        color: #2b9348;
+                    ">CloudQuizz<span style="
+                        display: inline-block;
+                        width: 5px;
+                        height: 5px;
+                        margin-left: 5px;
+                        background-color: red;
+                    "></span></span>
+                </div>
+                <!-- logo div tag end-->
+            </h2>
+        </div>
+        
+        <div class="login_inputs">
+            <div>
+                <span><i class='bx bx-user'></i></span>
+                <input type="text" placeholder="username" name="username" id="user_name">
+            </div>
+            <div>
+                <span><i class='bx bx-lock-open'></i></span>
+                <input type="password" placeholder="password" name="userpass" id="user_pass">
+                <span id="pass_eye" style="right: 0; cursor: pointer;"><i class='bx bx-low-vision'></i></span>
+            </div>
+            <div style="text-align: end;"><a href="#" style="text-decoration: none;">Forgot password?</a></div>
+        </div>
+        <div class="user_login_btn"><input type="submit" value="Login"></div>
+        <div class="login_option">
+            <span>Don't have an account?</span>
+            <a href="#" target="_blank"> Create</a>
+        </div>
+   </div>
+
+   <script src="./assets/js/user/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css links -->
+    <link rel="stylesheet" href="./assets/css/main.css"> <!-- mandatory-->
+    <link rel="stylesheet" href="./assets/css/user/quiz_test.css">
+    <!-- for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <!-- loading content start -->
+    <div class="loading">
+        <!-- logo div tag -->
+        <div style="display: inline-block;">
+            <span style="
+                font-family: 'Prompt', sans-serif;
+                color: #2b9348;
+            ">CloudQuizz<span style="
+                display: inline-block;
+                width: 5px;
+                height: 5px;
+                margin-left: 5px;
+                background-color: red;
+            "></span></span>
+
+            <div class="loading_range"></div>
+        </div>
+        <!-- logo div tag end-->
+    </div>
+    <!-- loading content end -->
+
+    <!-- countdown content start -->
+    <div class="quiz-sart-count-down"></div>
+    <!-- countdown content end -->
+
+    <div class="gradient-color-area">
+    <header>
+        <div class="container">
+            <div class="main-header d-flex-space-between">
+                <div class="logo"><!-- logo div tag -->
+                    <div style="display: inline-block;">
+                        <span style="
+                            font-family: 'Prompt', sans-serif;
+                            color: #2b9348;
+                        ">CloudQuizz<span style="
+                            display: inline-block;
+                            width: 5px;
+                            height: 5px;
+                            margin-left: 5px;
+                            background-color: red;
+                        "></span></span>
+                    </div>
+                    <!-- logo div tag end-->
+                </div>
+    
+                <div class="nav">
+                    <a href="#">CREATE</a>
+                    <a href="#">LOGIN</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- main quiz area start -->
+    <div class="container">
+        <div class="quiz-content-area d-flex-culum-center-xy">
+            <!-- timming content start -->
+            <div class="quiz_details_content">
+                <div class="time_count_down">--:--</div>
+                <div class="details">
+                    <div class="score_details">
+                        <p> 15</p>
+                        <span>|</span>
+                        <p> 7</p>
+                        <span>|</span>
+                        <p>Total 22</p>
+                    </div>
+                    <div class="time_avarage">AVERAGE <span>78%</span></div>
+                </div>
+                
+            
+            </div>
+            <!-- timming content end -->
+            <div class="main-content">
+                <a href="#" class="quiz_ownership" title="Go to profile">
+                    <div>
+                        <img src="/main/assets/image/user_avater.svg" alt="owner_image">
+                    </div>
+                    <div>
+                        <p style="font-size: 16px; font-weight: 600;">Rokibul Hasan</p>
+                        <p style="font-size: 14px;">April 19, 2023</p>
+                        <p style="font-size: 12px; margin-top: 8px;">
+                            <span>
+                                <span>&#11088;</span>
+                                <span>&#11088;</span>
+                                <span>&#11088;</span>
+                                <span>&#11088;</span>
+                            </span>
+                            <span>|</span>
+                            <span>Level 3</span>
+                            <span>|</span>
+                            <span>Vote 67</span>
+                        </p>
+                    </div>
+                </a>
+
+                <div class="quiz_content">
+                    <div class="question-content">
+                        <span>Question:</span>
+                        <span>Who is the founder of CloudQuizz?</span>
+                    </div>
+                    <p style="font-size: 15px; margin-bottom: 18px;">Choose your curect answer:</p>
+                    <div class="options-content">
+                        <p>Elon Mask</p>
+                        <p>Rokibul Hasan</p>
+                        <p>Mark Zuckerberg</p>
+                        <p>Bill Gates</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d55919.28652598656!2d-122.419416!3d37.774929!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e3bce8960c1%3A0xd3a1a49a66fde6e4!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1620604911282!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+  
+    <!-- main quiz area end -->
+
+    <div class="copyright" style="position: absolute;bottom: 0;padding: 20px;text-align: center;left: 0;right: 0;color: grey;">Copyright © 2023 CloudQuizz. All right reserved</div>
+    </div>
+    
+    <script type="module" src="./assets/js/main.js"></script>
+    <!-- <script type="module" src="/main/assets/js/user/countDown.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,89 @@
+#mainDiv {
+    max-width: 1080px;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto; 
+}
+#mainDiv div img {
+    width: 600px;
+}
+
+
+#login_section {
+    width: 300px;
+}
+#login_section .login_box_header {
+    margin-bottom: 60px;
+    line-height: 2;
+}
+#login_section .login_inputs {
+    margin-bottom: 50px;
+}
+#login_section .login_inputs div {position: relative;}
+#login_section .login_inputs div span {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    height: 100%;
+    font-size: 20px;
+    color: grey;
+}
+#login_section .login_inputs div input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid grey;
+    padding: 10px;
+    padding-left: 50px;
+    margin-bottom: 10px;
+    outline: none;
+    font-size: 18px;
+    color: gray;
+}
+
+#login_section .login_inputs div input:focus {
+    border-bottom: 2px solid #2b9348;
+}
+#login_section .login_inputs div #user_pass:focus {
+    padding-right: 50px;
+}
+
+#login_section .user_login_btn {
+    display: flex;
+
+}
+#login_section .user_login_btn input {
+    border: none;
+    border-radius: 50px;
+    background: #36c15d;
+    padding: 10px 50px;
+    color: white;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+#login_section .user_login_btn input:hover {
+    background: #2b9348;
+}
+#login_section .login_option {
+    margin-top: 50px;
+    color: grey;
+}
+
+
+/* some for registration page */
+
+
+/* For Firefox */
+.login_inputs #user_mobile_number[type=number] {
+    -moz-appearance: textfield;
+}
+  
+/* For Safari */
+.login_inputs #user_mobile_number[type=number]::-webkit-inner-spin-button,
+.login_inputs #user_mobile_number[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+  

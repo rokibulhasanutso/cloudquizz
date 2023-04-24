@@ -1,0 +1,121 @@
+
+/* main area */
+main {
+ margin: 20px 0;
+}
+main .headding_area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 600px;
+}
+main .headding_area .head_line {
+    font-family: 'Hammersmith One', sans-serif;
+    font-size: 45px;
+    color: #2b9348;
+    margin-bottom: 80px;
+    font-weight: 500;
+    text-align: center;
+}
+
+main .headding_area .head_line span{
+    font-family: 'Hammersmith One', sans-serif;
+    color: #ff5d4f;
+}
+
+main .headding_area .spining-text {
+    height: 58px;
+}
+
+main .headding_area .spining-text div {
+    height: calc(100% / 1);
+    overflow: hidden;
+    /* border: 1px solid; */
+    padding-top: 78px;
+}
+
+main .headding_area .spining-text div .sec_head_line {
+    padding: 20px 0px;
+    animation: spining_sentence 12s infinite;
+}
+
+@keyframes spining_sentence {
+    5.73%{
+        transform: translateY(-120%);   
+    }
+    15.73%{
+        transform: translateY(-100%);
+    }
+    21.46%{
+        transform: translateY(-220%);
+    }
+    31.6%{
+        transform: translateY(-200%);
+    }
+    37.33%{
+        transform: translateY(-320%);
+    }
+    47.4%{
+        transform: translateY(-300%);
+    }
+    53.13%{
+        transform: translateY(-420%);
+    }
+    63.2%{
+        transform: translateY(-400%);
+    }
+    68.93%{
+        transform: translateY(-520%);
+    }
+    79%{
+        transform: translateY(-500%);
+    }
+    84.73%{
+        transform: translateY(-620%);
+    }
+    94.38%{
+        transform: translateY(-600%);
+    }
+    100%{
+        transform: translateY(-700%);
+    }
+}
+
+main .headding_area .spining-text .sec_head_line {
+    color: grey;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 10px 0;
+}
+
+main .headding_area a{
+    background-color: #36c15d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5PX;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 100px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    transition: .2s;
+    display: flex;
+    align-items: center;
+}
+
+main .headding_area a:hover {
+    padding: 10px 40px;
+}
+
+main .headding_area a i {
+    padding-left: 10px;
+    vertical-align: baseline;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    color: #ffff00;
+}
+

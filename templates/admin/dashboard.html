@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- css links -->
+    <link rel="stylesheet" href="./assets/css/main.css"> <!-- mandatory-->
+    <link rel="stylesheet" href="./assets/css/user/dashboard.css">
+    <!-- for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="main-header d-flex-space-between">
+                <div class="logo"><!-- logo div tag -->
+                    <div style="display: inline-block;">
+                        <span style="
+                            font-family: 'Prompt', sans-serif;
+                            color: #2b9348;
+                        ">CloudQuizz<span style="
+                            display: inline-block;
+                            width: 5px;
+                            height: 5px;
+                            margin-left: 5px;
+                            background-color: red;
+                        "></span></span>
+                    </div>
+                    <!-- logo div tag end-->
+                </div>
+    
+                <div class="nav">
+                    <a href="#" class="quiz_ownership" title="Go to profile">
+                        <div>
+                            <img src="/main/assets/image/user_avater.svg" alt="owner_image">
+                        </div>
+                        <div>
+                            <p style="font-size: 16px; font-weight: 600;">Rokibul Hasan</p>
+                            <p style="font-size: 12px;">Admin owner</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="app_overView">
+                <div class="user_details">
+                    <p>
+                        <span>Total user</span>
+                        <span>1200</span>
+                    </p>
+                    <p>
+                        <span>New user</span>
+                        <span>200</span>
+                    </p>
+                </div>
+                <div class="quiz_details">
+                    <p>
+                        <span>Total quizes</span>
+                        <span>1200</span>
+                    </p>
+                    <p>
+                        <span>New posted quizes</span>
+                        <span>200</span>
+                    </p>
+                </div>
+                <div class="yourPost_details">
+                    <p>
+                        <span>Your posted quiz</span>
+                        <span>20</span>
+                    </p>
+                    <p>
+                        <span>post</span>
+                        <span>03</span>
+                    </p>
+                </div>
+            </div>
+
+            <hr style="margin-block: 20px;border: 1px solid #dedede;">
+
+            <div class="making_question_content">
+                <div class="textarea"><textarea name="question" id="" cols="30" rows="auto" placeholder="Question"></textarea></div>
+                <!-- options -->
+                <div class="making_question_options">
+                    <p>write options</p>
+                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option/write here currect answer"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option"></textarea></div>
+                </div>
+
+                <button class="submit">Submit</button>
+            </div>
+        </div>
+    </main>
+
+
+    <div class="copyright" style="position: absolute;bottom: 0;padding: 20px;text-align: center;left: 0;right: 0;color: grey;">Copyright © 2023 CloudQuizz. All right reserved</div>
+    
+
+    <script src="./assets/js/admin/dashboard.js"></script>
+</body>
+</html>

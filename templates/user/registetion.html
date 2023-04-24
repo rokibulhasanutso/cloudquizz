@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/user/registration-login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+   <div id="mainDiv">
+    <div>
+        <img src="/main/assets/image/login.jpg" alt="login page image">
+    </div>
+
+    <div id="login_section">
+        <div class="login_box_header">
+            <h1>Welcome</h1>
+            <h2>Join our community
+                <!-- logo div tag -->
+                <div style="display: inline-block;">
+                    <span style="
+                        font-family: Prompt;
+                        color: #2b9348;
+                    ">CloudQuizz<span style="
+                        display: inline-block;
+                        width: 5px;
+                        height: 5px;
+                        margin-left: 5px;
+                        background-color: red;
+                    "></span></span>
+                </div>
+                <!-- logo div tag end-->
+            </h2>
+        </div>
+        <div class="login_inputs">
+            <div>
+                <span><i class='bx bx-user'></i></span>
+                <input type="text" placeholder="name" name="name" id="user_name">
+            </div>
+            <div>
+                <span style="font-size: 18px;">+88</span>
+                <input type="number" placeholder="mobile number" name="mobilenumber" id="user_mobile_number" >
+            </div>
+            <div>
+                <span><i class='bx bx-lock-open'></i></span>
+                <input type="password" placeholder="password" name="userpass" id="user_pass">
+            </div>
+            <div>
+                <span><i class='bx bx-lock-open'></i></span>
+                <input type="password" placeholder="confirm password" name="userpass" id="user_confirm_pass">
+            </div>
+        </div>
+        <div class="user_login_btn"><input type="submit" value="Sign up"></div>
+        <div class="login_option">
+            <span>I have an account?</span>
+            <a href="#" target="_blank"> Log in</a>
+        </div>
+   </div>
+
+   <script src="./assets/js/user/registetion.js"></script>
+</body>
+</html>

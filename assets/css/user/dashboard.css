@@ -1,0 +1,89 @@
+
+.quiz_ownership {
+    font-size: 15px;
+    border-bottom: 1px solid #c3c3c3;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: grey!important;
+    background-color: transparent !important;
+}
+
+.quiz_ownership div img {
+    width: 50px;
+    height: 50px;
+}
+
+.app_overView > div {
+    display: inline-block;
+    padding: 20px;
+    margin-right: 15px;
+    margin-top: 15px;
+    background-color: lavender;
+    border-radius: 10px;
+    color: #484848;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 2;
+    min-width: 250px;
+}
+.app_overView > div > p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.making_question_content {
+    max-width: 500px;
+}
+.making_question_content .textarea{
+    padding-block: 15px;
+    border: 1px solid #dedede;
+    margin-block: 10px; 
+    border-radius: 5px;
+}
+.making_question_content .textarea textarea {
+    width: 100%;
+    height: 30px;
+    max-height: 200px;
+    padding-inline: 20px;
+    line-height: 1.5;
+    resize: none;
+    font-size: 18px;
+    border: none;
+    overflow-y: hidden;
+    /* transition: .1s; */
+}
+
+.making_question_content .textarea textarea:focus {
+    border-color: #2b9348;
+}
+
+.making_question_content textarea::-webkit-scrollbar {
+    width: 5px;
+    margin-right: 5px;
+    background-color: transparent;
+}
+.making_question_content textarea::-webkit-scrollbar-thumb {
+    background-color: gray;
+    cursor: pointer;
+    border-radius: 50px;
+    
+}
+
+.making_question_content .submit{
+    margin-top: 20px;
+    border: none;
+    border-radius: 50px;
+    background: #36c15d;
+    padding: 10px 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+}
+.making_question_content .submit:hover {
+    background-color: #2b9348;
+}
