@@ -1,12 +1,13 @@
 // import { counting } from "./countDown.js"; 
 import { timmingFormat } from './timmingFormat.js';
+import { getUserDetails } from './config.js';
 
 // loading function start
 const loadElement = document.querySelector("body")
 const loadingElement = document.querySelector(".loading")
 const loadingRange = document.querySelector(".loading_range")
 
-loadingRange.style.width = '20%';
+// loadingRange.style.width = '20%';
 let startTime = window.performance.now()
 window.onload = function myFunction() {
     let endTime = window.performance.now();
@@ -40,3 +41,5 @@ function countDownTime(countTime){
 }
 
 
+// firebase database section 
+getUserDetails()
