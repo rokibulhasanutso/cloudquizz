@@ -93,6 +93,9 @@ const passwordMatching = () => {
 
 // registration submition function
 userSignUpBtn.addEventListener('click', function() {
+
+    console.log(window.location.host)
+
     const varifyPassword = passwordMatching();
 
     if (
@@ -105,16 +108,6 @@ userSignUpBtn.addEventListener('click', function() {
 
         const username = generateUsername(userName.value);
         addUser(username, varifyPassword, userName.value, mobileNumber.value);
-
-
-        // const authenticationData = {
-        //     username: generateUsername(userName.value),
-        //     password : varifyPassword,
-        //     mobileNbr : mobileNumber.value
-        // }
-        // console.log(authenticationData);
-
-        
 
         // window.location.href = 'http://127.0.0.1:5500/main/templates/user/login.html'
 
