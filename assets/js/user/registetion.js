@@ -1,3 +1,7 @@
+// imports start
+import { querySnapshot, addUser } from "../firebase-config/config.js"
+// imports end
+
 // submission inputs 
 let loginInputs = document.querySelector('.login_inputs');
 // document to inputs
@@ -28,11 +32,16 @@ const errorMessage = errMsg => {
     }
 }
 
-const arry = ["01812410135", "01812410136", "01712410135", "01312410135", "01603007346"]
+
 // mobile number checking function
+// database mobileNumber data start 
+const serverMblNbr = []
+querySnapshot.forEach(doc => { serverMblNbr.push(doc.data().mobileNumber) });
+// database mobileNumber data start end
+
 let varifyMobileNumber;
 mobileNumber.addEventListener('keyup', function() {
-    const matchingNumber = arry.includes(mobileNumber.value);
+    const matchingNumber = serverMblNbr.includes(mobileNumber.value);
     const haveCheckIcon = mobileNumber.nextElementSibling;
     if(mobileNumber.value === '' || matchingNumber === true){
         if (matchingNumber == true) errorMessage('This mobile number has been used.');
@@ -44,7 +53,7 @@ mobileNumber.addEventListener('keyup', function() {
             if ((mobileNumber.value).length == 11) {
                 mobileNumber.style.borderBottomColor = '#2b9348';
                 const checkIcon = document.createElement('span');
-                checkIcon.style.cssText = `right: 0; color: #2b9348;`
+                checkIcon.style.cssText = `right: 0; color: #2b9348;`;
                 checkIcon.innerHTML = `<i style="font-weight: bold;" class='bx bx-check'></i>`;
                 mobileNumber.insertAdjacentElement('afterend', checkIcon);
                 varifyMobileNumber = mobileNumber.value;
@@ -92,18 +101,30 @@ userSignUpBtn.addEventListener('click', function() {
         varifyPassword !== undefined
     ) {
         document.write('Get: register successfully! ')
-        const authenticationData = {
-            username: generateUsername(userName.value),
-            password : varifyPassword
-        }
-        console.log(authenticationData);
+
+
+        const username = generateUsername(userName.value);
+        addUser(username, varifyPassword, userName.value, mobileNumber.value);
+
+
+        // const authenticationData = {
+        //     username: generateUsername(userName.value),
+        //     password : varifyPassword,
+        //     mobileNbr : mobileNumber.value
+        // }
+        // console.log(authenticationData);
+
+        
 
         // window.location.href = 'http://127.0.0.1:5500/main/templates/user/login.html'
 
         function generateUsername(name){
-            let username = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+            // database username data start
+            const usernameData = [];
+            querySnapshot.forEach(doc => { usernameData.push(doc.data().username) }); 
+            // database username data end 
 
-            const usernameData = ['rokibulhasan', 'rokibul', 'rokibulhasan01', 'rokibulhasan02',]
+            let username = name.toLowerCase().replace(/[^a-z0-9]/g, '');
             let joinNumber = 1;
             while (true) {
                 if (usernameData.includes(username) === true) {

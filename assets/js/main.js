@@ -1,6 +1,7 @@
 // import { counting } from "./countDown.js"; 
 import { timmingFormat } from './timmingFormat.js';
-import { getUserDetails } from './config.js';
+import { querySnapshot } from './firebase-config/config.js';
+// import * as regitrationData from './user/registetion.js'
 
 // loading function start
 const loadElement = document.querySelector("body")
@@ -42,4 +43,7 @@ function countDownTime(countTime){
 
 
 // firebase database section 
-getUserDetails()
+
+querySnapshot.forEach(doc => {
+    console.log(`${doc.id} => ${JSON.stringify(doc.data())}`)
+});
