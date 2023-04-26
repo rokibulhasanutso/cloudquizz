@@ -40,7 +40,19 @@ export async function addUser(username, password, name, mobileNumber) {
 }
 // database add user function end
 
+export async function getAuth(username) {
+  try {
+    const docSnap = await getDoc(doc(db, 'app-user', username));
 
+    if (docSnap.exists()) {
+      return docSnap.data();
+    }else{
+      console.log('user not found');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 

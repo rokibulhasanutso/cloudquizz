@@ -94,8 +94,6 @@ const passwordMatching = () => {
 // registration submition function
 userSignUpBtn.addEventListener('click', function() {
 
-    console.log(window.location.host)
-
     const varifyPassword = passwordMatching();
 
     if (
@@ -103,13 +101,16 @@ userSignUpBtn.addEventListener('click', function() {
         varifyMobileNumber !== undefined &&
         varifyPassword !== undefined
     ) {
-        document.write('Get: register successfully! ')
-
+        // document.write('Get: register successfully! ')
 
         const username = generateUsername(userName.value);
         addUser(username, varifyPassword, userName.value, mobileNumber.value);
+        window.location.href = `${window.location.origin}/cloudquizz/templates/user/user_dashboard.html`;
 
-        // window.location.href = 'http://127.0.0.1:5500/main/templates/user/login.html'
+        userName.value = '';
+        mobileNumber.value = '';
+        userPassword.value = '';
+        userConfirmPassword.value = '';
 
         function generateUsername(name){
             // database username data start
