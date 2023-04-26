@@ -1,4 +1,4 @@
-import { querySnapshot, getAuth } from "../firebase-config/config.js"
+import { querySnapshot, getAuth } from "../firebase/database-setting.js"
 
 
 let loginInputs = document.querySelector('.login_inputs');

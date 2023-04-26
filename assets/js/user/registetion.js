@@ -1,5 +1,5 @@
 // imports start
-import { querySnapshot, addUser } from "../firebase-config/config.js"
+import { querySnapshot, addUser } from "../firebase/database-setting.js"
 // imports end
 
 // submission inputs 
@@ -105,7 +105,7 @@ userSignUpBtn.addEventListener('click', function() {
 
         const username = generateUsername(userName.value);
         addUser(username, varifyPassword, userName.value, mobileNumber.value);
-        window.location.href = `${window.location.origin}/cloudquizz/templates/user/user_dashboard.html`;
+        // window.location.href = `${window.location.origin}/cloudquizz/templates/user/user_dashboard.html`;
 
         userName.value = '';
         mobileNumber.value = '';
