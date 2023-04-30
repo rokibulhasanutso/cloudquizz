@@ -1,6 +1,9 @@
 // imports start
-import { querySnapshot, addUser } from "../firebase/database-setting.js"
+import { querySnapshot, addUser, getAuth } from "../firebase/database-setting.js"
+import { redirectTo, profileUrl } from "../auth/path_auth.js";
+import { login } from "../auth/auth.js";
 // imports end
+
 
 // submission inputs 
 let loginInputs = document.querySelector('.login_inputs');
@@ -93,7 +96,6 @@ const passwordMatching = () => {
 
 // registration submition function
 userSignUpBtn.addEventListener('click', function() {
-
     const varifyPassword = passwordMatching();
 
     if (
@@ -101,16 +103,29 @@ userSignUpBtn.addEventListener('click', function() {
         varifyMobileNumber !== undefined &&
         varifyPassword !== undefined
     ) {
-        // document.write('Get: register successfully! ')
+        (function() {
+            const username = generateUsername(userName.value);
+            addUser(username, varifyPassword, userName.value, mobileNumber.value)
+            .then(async function() {
+                const data = await getAuth(username);
 
-        const username = generateUsername(userName.value);
-        addUser(username, varifyPassword, userName.value, mobileNumber.value);
+                if (data) {
+                    login(data.username);
+
+                    userName.value = '';
+                    mobileNumber.value = '';
+                    userPassword.value = '';
+                    userConfirmPassword.value = '';
+                }else{
+                    console.log('Account could not be created');
+                }
+            })
+            .then(() => {
+                redirectTo(profileUrl);
+            })
+        })();
+        
         // window.location.href = `${window.location.origin}/cloudquizz/templates/user/user_dashboard.html`;
-
-        userName.value = '';
-        mobileNumber.value = '';
-        userPassword.value = '';
-        userConfirmPassword.value = '';
 
         function generateUsername(name){
             // database username data start

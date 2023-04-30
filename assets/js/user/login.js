@@ -1,4 +1,6 @@
 import { querySnapshot, getAuth } from "../firebase/database-setting.js"
+import { isAuthenticated, login } from "../auth/auth.js";
+import { redirectTo } from "../auth/path_auth.js";
 
 
 let loginInputs = document.querySelector('.login_inputs');
@@ -36,7 +38,8 @@ async function authticate(inputUsername, inputPassword) {
 
     if(data) {
         if (inputUsername === data.username && inputPassword === data.password) {
-            window.location.href = `${window.location.origin}/cloudquizz/templates/user/user_dashboard.html`;
+            login(data.username)
+            redirectTo(`/cloudquizz/templates/user/profile.html`);
         }
         else errorMessage("username or password invalid!");
     }

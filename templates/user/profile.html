@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - CloudQuizz</title>
+
+    <link rel="stylesheet" href="../../assets/css/user/profile.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="shortcut icon" href="../../assets/image/favicon.png" type="image/x-icon">
+
+    <script type="module" src="../../assets/js/auth/path_auth.js"></script>
+</head>
+<body style="display: none;">
+
+    <!-- page header  -->
+    <header>
+        <div class="container">
+            <div class="main-header d-flex-space-between">
+                <div class="logo"><!-- logo div tag -->
+                    <div style="display: inline-block;">
+                        <span style="
+                            font-family: 'Prompt', sans-serif;
+                            color: #2b9348;
+                        ">CloudQuizz<span style="
+                            display: inline-block;
+                            width: 5px;
+                            height: 5px;
+                            margin-left: 5px;
+                            background-color: red;
+                        "></span></span>
+                    </div>
+                    <!-- logo div tag end-->
+                </div>
+    
+                <!-- <div class="nav">
+                    <a href="./templates/user/registetion.html">Join</a>
+                    <a href="./templates/user/login.html">Start</a>
+                </div> -->
+                <div class="nav">
+                    <a href="" class="quiz_ownership" title="Go to profile">
+                        <div>
+                            <img src="../../assets/image/user_avater.svg" alt="owner_image">
+                        </div>
+                        <div>
+                            <p class="db_user-name" style="font-size: 16px; font-weight: 600;"></p>
+                            <p class="db_username" style="font-size: 12px;"></p>
+                        </div>
+                    </a>
+                    <a href="" class="logout-btn">LOGOUT</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- profile overview -->
+    <div class="container border-bottom">
+        <div class="profile-overview">
+            <div class="profile-img">
+                <img src="../../assets/image/user_avater.svg" alt="profile-image">
+                <div class="badge"></div>
+            </div>
+            <div class="profile-details">
+                <div class="profile-miniDetails">
+                    <p class="user-name db_user-name"></p>
+                    <p class="miniDetails">Bonus Booster. <span>24</span> lv</p>
+                </div>
+                <div class="user-details">
+                    <div class="progress-level">
+                        <p class="progress-level-value">100 / 100</p>
+                        <input type="range" name="" id="profile_progress_range">
+                    </div>
+                    <div class="quiz-details">
+                        <div class="quiz-wins">
+                            <!-- win icon  -->
+                            <div class="score">
+                                <p class="point">27</p>
+                                <p class="score-title">Quizz wins</p>
+                            </div>
+                        </div>
+                        <div class="quiz-wins">
+                            <!-- win icon  -->
+                            <div class="score">
+                                <p class="point">910</p>
+                                <p class="score-title">Highest Score</p>
+                            </div>
+                        </div>
+                        <div class="quiz-wins">
+                            <!-- win icon  -->
+                            <div class="score">
+                                <p class="point">218</p>
+                                <p class="score-title">Curect Answer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="profile-post-area">
+
+            <!-- post creator btn -->
+            <div class="post-create-btn">Turn your mind questions into quizzes...</div>
+
+            <!-- posted quizzes -->
+            <div class="quiz_content">
+                <div class="question-content">
+                    <span>Question:</span>
+                    <span>Who is the founder of CloudQuizz?</span>
+                </div>
+                <p style="font-size: 15px; margin-bottom: 18px;">Choose your curect answer:</p>
+                <div class="options-content">
+                    <p>Elon Mask</p>
+                    <p>Rokibul Hasan</p>
+                    <p>Mark Zuckerberg</p>
+                    <p>Bill Gates</p>
+                </div>
+            </div>
+
+            <div class="quiz_content">
+                <div class="question-content">
+                    <span>Question:</span>
+                    <span>Who is the founder of CloudQuizz?</span>
+                </div>
+                <p style="font-size: 15px; margin-bottom: 18px;">Choose your curect answer:</p>
+                <div class="options-content">
+                    <p>Elon Mask</p>
+                    <p>Rokibul Hasan</p>
+                    <p>Mark Zuckerberg</p>
+                    <p>Bill Gates</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- popup quiz  -->
+    <div class="popup">
+        <div class="create-quiz-popup">
+            <div class="popup-close-btn"><i class='bx bx-x'></i></div>
+
+            <div class="making_question_content">
+                <div class="textarea"><textarea name="question" id="" cols="30" rows="auto" placeholder="Question"></textarea></div>
+                <!-- options -->
+                <div class="making_question_options">
+                    <p>write options</p>
+                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option/write here currect answer"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option"></textarea></div>
+                </div>
+
+                <button class="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="../../assets/js/user/profile.js"></script>
+    <script type="module" src="../../assets/js/main.js"></script>
+</body>
+</html>

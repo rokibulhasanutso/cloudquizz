@@ -1,4 +1,19 @@
 import { timmingFormat } from "../timmingFormat.js";
+import { getAuth } from "../firebase/database-setting.js";
+
+
+(async function() {
+    
+    let data = await getAuth(localStorage.getItem('app_login_id'));
+    // document.querySelector('.quiz_ownership').children[1].children[0]
+    
+    document.querySelectorAll('.db_user-name').forEach(name => {
+        name.innerHTML = data.name;
+    })
+    document.querySelectorAll('.db_username').forEach(username => {
+        username.innerHTML = data.username;
+    })
+})()
 
 // quiz time counting funtion start
 export function countDownTime(countTime){
@@ -14,6 +29,7 @@ export function countDownTime(countTime){
         }
     }, 1000);
 }
+countDownTime(120)
 // quiz time counting funtion end
 
 // count down screen start

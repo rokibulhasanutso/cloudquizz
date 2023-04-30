@@ -1,8 +1,12 @@
+import { logout, isAuthenticated } from "../../assets/js/auth/auth.js";
 
-import { querySnapshot } from './firebase/config.js';
 
-// firebase database section 
+let logoutbtn = document.querySelector('.logout-btn');
 
-// querySnapshot.forEach(doc => {
-//     console.log(`${doc.id} => ${JSON.stringify(doc.data())}`)
-// });
+logoutbtn.addEventListener('click', () => logout())
+
+
+if (isAuthenticated()) {
+    document.querySelector('.with_login').style.display = "flex";
+    document.querySelector('.with_out_login').style.display = "none";
+}
