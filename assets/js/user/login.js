@@ -43,6 +43,7 @@ async function authticate(inputUsername, inputPassword) {
         }
         else errorMessage("username or password invalid!");
     }
+    else errorMessage("username or password invalid!");
 }
 
 

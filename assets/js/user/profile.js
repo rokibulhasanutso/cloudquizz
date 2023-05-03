@@ -1,4 +1,5 @@
-import { getAuth } from "../firebase/database-setting.js";
+import { getAuth, addQuiz, quizList } from "../firebase/database-setting.js";
+
 
 (async function() {
     let data = await getAuth(localStorage.getItem('app_login_id'));
@@ -11,11 +12,6 @@ import { getAuth } from "../firebase/database-setting.js";
         username.innerHTML = data.username;
     })
 })()
-
-
-
-
-
 
 // popup section start
 const popupBox = document.querySelector('.popup');
@@ -44,7 +40,7 @@ textareas.forEach(textarea => {
 
 window.addEventListener('keyup', () => {
     const popupReHeight = popupBox.offsetHeight - 60;
-    console.log(popupContentBox.offsetHeight)
+    // console.log(popupContentBox.offsetHeight)
     if (popupContentBox.offsetHeight >= popupReHeight) {
         popupContentBox.style.height = popupContentBox.offsetHeight + "px";
         popupContentBox.style.overflowY = "scroll";
@@ -66,6 +62,78 @@ textareas.forEach(textarea => {
 })
 // popup section end
 
+// popup Content Box input send to database start
+const feedbackMsg = document.querySelector('#popup_errormsg');
+const submittionBtn = document.querySelector('.submit');
+
+submittionBtn.addEventListener('click', () => {
+    const userid = localStorage.getItem('app_login_id');
+    const qst = document.querySelector('#db-qst').value;
+    const op1 = document.querySelector('#db-op1').value;
+    const op2 = document.querySelector('#db-op2').value;
+    const op3 = document.querySelector('#db-op3').value;
+    const op4 = document.querySelector('#db-op4').value;
+
+    submittionBtn.style.setProperty('user-select','none');
+    if (
+        qst !== "" &&
+        op1 !== "" &&
+        op2 !== "" &&
+        op3 !== "" &&
+        op4 !== ""
+    ){
+        addQuiz(userid, qst, op1, op2, op3, op4)
+        .then(() => {
+            feedbackMsg.innerHTML = 'Add question successfully!';
+        })
+    } else {
+        feedbackMsg.innerHTML = 'Please fillup all box\'s';
+    }
+})
+
+
+textareas.forEach(textarea => {
+    textarea.addEventListener('keydown', () => {
+        feedbackMsg.innerHTML = '';
+    })
+})
+
+
+// popup Content Box input send to database end 
 
 
 
+// quizList.forEach(doc => {
+//     console.log(`${doc.id} => ${doc.data()}`)
+//     console.log(doc.data())
+// })
+
+
+const postArea = document.querySelector('#posted_quizes');
+
+function db_quizContent() {
+    quizList.forEach(doc => {
+        if (doc.data().username === localStorage.getItem('app_login_id')) {
+            const divElmt = document.createElement('div');
+
+            divElmt.innerHTML = `
+                <div class="quiz_content">
+                    <div class="question-content" style="display: flex;">
+                        <p>Question:</p>
+                        <p>${doc.data().question}</p>
+                    </div>
+                    <p style="font-size: 15px; margin-bottom: 18px;">Choose your curect answer:</p>
+                    <div class="options-content">
+                        <p>${doc.data().option01}</p>
+                        <p>${doc.data().option02}</p>
+                        <p>${doc.data().option03}</p>
+                        <p>${doc.data().option04}</p>
+                    </div>
+                </div>
+            `// end innerHTML
+
+            postArea.appendChild(divElmt);
+        }
+    })
+}
+db_quizContent()

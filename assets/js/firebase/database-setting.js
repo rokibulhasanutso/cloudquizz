@@ -29,10 +29,35 @@ export async function getAuth(username) {
     if (docSnap.exists()) {
       return docSnap.data();
     }else{
-      console.log('user not found');
+      // console.log('db-msg: user not found');
     }
   } catch (error) {
     console.log(error);
   }
 }
 // database auth function check user end
+
+
+// database add/view quiz function start
+const quizref = fs.collection(db, 'quiz-list');
+
+// adding quiz function
+export async function addQuiz(username, question, option01, option02, option03, option04) {
+  try {
+    await fs.setDoc(fs.doc(quizref), {
+      username,
+      question, 
+      option01, 
+      option02, 
+      option03, 
+      option04
+    })
+  } catch (error) {
+    console.log('form adding quiz to database: ', error);
+  }
+}
+
+// quiz get all quiz function
+export const quizList = await fs.getDocs(quizref);
+
+// database add/view quiz function end

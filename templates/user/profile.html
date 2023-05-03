@@ -109,33 +109,7 @@
             <div class="post-create-btn">Turn your mind questions into quizzes...</div>
 
             <!-- posted quizzes -->
-            <div class="quiz_content">
-                <div class="question-content">
-                    <span>Question:</span>
-                    <span>Who is the founder of CloudQuizz?</span>
-                </div>
-                <p style="font-size: 15px; margin-bottom: 18px;">Choose your curect answer:</p>
-                <div class="options-content">
-                    <p>Elon Mask</p>
-                    <p>Rokibul Hasan</p>
-                    <p>Mark Zuckerberg</p>
-                    <p>Bill Gates</p>
-                </div>
-            </div>
-
-            <div class="quiz_content">
-                <div class="question-content">
-                    <span>Question:</span>
-                    <span>Who is the founder of CloudQuizz?</span>
-                </div>
-                <p style="font-size: 15px; margin-bottom: 18px;">Choose your curect answer:</p>
-                <div class="options-content">
-                    <p>Elon Mask</p>
-                    <p>Rokibul Hasan</p>
-                    <p>Mark Zuckerberg</p>
-                    <p>Bill Gates</p>
-                </div>
-            </div>
+            <div id="posted_quizes" class="posted_quizes"></div>
 
         </div>
     </div>
@@ -147,17 +121,18 @@
             <div class="popup-close-btn"><i class='bx bx-x'></i></div>
 
             <div class="making_question_content">
-                <div class="textarea"><textarea name="question" id="" cols="30" rows="auto" placeholder="Question"></textarea></div>
+                <div class="textarea"><textarea name="question" id="db-qst" cols="30" rows="auto" placeholder="Question"></textarea></div>
                 <!-- options -->
                 <div class="making_question_options">
                     <p>write options</p>
-                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option/write here currect answer"></textarea></div>
-                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option"></textarea></div>
-                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option"></textarea></div>
-                    <div class="textarea"><textarea name="option" id="" cols="30" rows="auto" placeholder="Option"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="db-op1" cols="30" rows="auto" placeholder="Option/write here currect answer"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="db-op2" cols="30" rows="auto" placeholder="Option"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="db-op3" cols="30" rows="auto" placeholder="Option"></textarea></div>
+                    <div class="textarea"><textarea name="option" id="db-op4" cols="30" rows="auto" placeholder="Option"></textarea></div>
                 </div>
 
                 <button class="submit">Submit</button>
+                <div id="popup_errormsg"></div>
             </div>
         </div>
     </div>

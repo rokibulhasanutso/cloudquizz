@@ -1,8 +1,14 @@
-import { isAuthenticated } from "../auth/auth.js";
- 
+import { getAuth } from "../firebase/database-setting.js";
 
-if (isAuthenticated()) {
-    document.querySelector('.with_login').style.display = "flex";
-    document.querySelector('.with_out_login').style.display = "none";
-}
-
+(async function() {
+    
+    let data = await getAuth(localStorage.getItem('app_login_id'));
+    // document.querySelector('.quiz_ownership').children[1].children[0]
+    
+    document.querySelectorAll('.db_user-name').forEach(name => {
+        name.innerHTML = data.name;
+    })
+    document.querySelectorAll('.db_username').forEach(username => {
+        username.innerHTML = data.username;
+    })
+})()

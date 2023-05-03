@@ -100,14 +100,15 @@
     margin-bottom: 18px;
 }
 
-.quiz_content .question-content span:first-child {
+.quiz_content .question-content p:first-child {
     font-weight: bold;
     color: darkorange;
 }
 
-.quiz_content .question-content span:nth-child(2){
+.quiz_content .question-content p:nth-child(2){
     display: inline-block;
-    text-indent: 10px;
+    margin-left: 10px;
+    line-height: 1.5;
 }
 
 .quiz_content .options-content {
