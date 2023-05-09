@@ -59,6 +59,7 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     padding-block: 40px;
+    position: relative;
     /* gap: 50px; */
 }
 
@@ -66,6 +67,9 @@
     width: 100%;
     max-width: 500px;
     padding-inline: 70px;
+    height: fit-content;
+    position: sticky;
+    top: 30px;
 }
 
 .profile-describe-details .profile_about_section input{
