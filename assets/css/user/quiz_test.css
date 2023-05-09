@@ -135,3 +135,22 @@
 .quiz_details_content .details .time_avarage span{
     color: #FF6000;
 }
+
+.skip-btn{
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.skip-btn button{
+    display: inline;
+    background-color: #36c15d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5PX;
+    font-weight: bold;
+    font-size: .83em;
+    text-decoration: none;
+    cursor: pointer;
+}
