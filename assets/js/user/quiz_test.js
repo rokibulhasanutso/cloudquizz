@@ -116,6 +116,7 @@ function randonQuizGame() {
             </div>
         `
         coDoTiInterval = countDownTime(15);
+        console.log(coDoTiInterval);
         document.querySelector('.quiz_content').innerHTML = addQuizContent;
     }
 

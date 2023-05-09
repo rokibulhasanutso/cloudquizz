@@ -50,7 +50,60 @@
     color: grey;
 }
 
+/* ################################
+### profile describe details ###
+################################ */
 
+.profile-describe-details {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding-block: 40px;
+    /* gap: 50px; */
+}
+
+.profile-describe-details .profile_about_section {
+    width: 100%;
+    max-width: 500px;
+    padding-inline: 70px;
+}
+
+.profile-describe-details .profile_about_section input{
+    border: none;
+    font-size: 16px;
+    color: gray;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+
+.profile-describe-details .profile_about_section .user-details {
+    line-height: 1.5;
+    padding-top: 20px;
+}
+
+.profile-describe-details .profile_about_section .user-details label { 
+    display: inline-block;
+    font-size: 16px;
+    color: gray;
+}
+
+.profile-describe-details .profile_about_section .user-details div p{
+    display: inline-block;
+    padding-left: 10px;
+    font-size: 16px;
+    color: gray;
+    cursor: default;
+}
+.profile-describe-details .profile_about_section .user-details div:hover i{
+    display: inline !important;
+}
+
+/* profile post area start */
+.profile-post-area {
+    width: 100%;
+}
+/* profile post area end */
 
 .post-create-btn {
     border: none;
@@ -69,15 +122,6 @@
 .post-create-btn:hover {
     border-color: #36c15d;
 }
-
-
-
-/* profile post area start */
-.profile-post-area {
-    padding-block: 40px;
-    max-width: 600px;
-}
-/* profile post area end */
 
 /* post quiz content start */
 .quiz_content {
