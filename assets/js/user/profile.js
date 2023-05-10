@@ -1,17 +1,55 @@
 import { getAuth, addQuiz, quizList } from "../firebase/database-setting.js";
 
-
+let data;
 (async function() {
-    let data = await getAuth(localStorage.getItem('app_login_id'));
+    data = await getAuth(localStorage.getItem('app_login_id'));
     // document.querySelector('.quiz_ownership').children[1].children[0]
     
-    document.querySelectorAll('.db_user-name').forEach(name => {
-        name.innerHTML = data.name;
+    document.querySelectorAll('.db_user-name').forEach(val => {
+        val.innerHTML = data.name;
     })
-    document.querySelectorAll('.db_username').forEach(username => {
-        username.innerHTML = data.username;
+    document.querySelectorAll('.db_username').forEach(val => {
+        val.innerHTML = data.username;
     })
-})()
+
+    // total right answer 
+    document.querySelectorAll('.db_rightScore').forEach(val => {
+        if (data.rightScore) {
+            val.innerHTML = data.rightScore;
+        } else {
+            val.innerHTML = 0;
+        }
+        
+    })
+
+    // total wrong answer 
+    document.querySelectorAll('.db_wongScore').forEach(val => {
+        if (data.wrongScore) {
+            val.innerHTML = data.wrongScore;
+        } else {
+            val.innerHTML = 0;
+        }
+    })
+
+    // total answer 
+    if (
+        data.rightScore !== undefined &&
+        data.wrongScore !== undefined
+    ) {
+        document.querySelector('.score .totalScore').innerText = data.rightScore + data.wrongScore;
+    } else {
+        document.querySelector('.score .totalScore').innerText = 0;
+    }
+
+
+    // total posted quiz 
+    let totalQuiz = 0;
+    quizList.forEach(doc => { if (doc.data().username === localStorage.getItem('app_login_id')) { totalQuiz++ }})
+    document.querySelector('.total_postQuiz').innerText = totalQuiz;
+
+})();
+
+
 
 // popup section start
 const popupBox = document.querySelector('.popup');
@@ -124,7 +162,9 @@ function db_quizContent() {
                     </div>
                     <p style="font-size: 15px; margin-bottom: 18px;">Choose your curect answer:</p>
                     <div class="options-content">
-                        <p>${doc.data().option01}</p>
+                        <p style="color: white; background-color: #36c15d; border-color: transparent;">
+                            ${doc.data().option01}
+                        </p>
                         <p>${doc.data().option02}</p>
                         <p>${doc.data().option03}</p>
                         <p>${doc.data().option04}</p>

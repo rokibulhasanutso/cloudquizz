@@ -21,6 +21,20 @@ export async function addUser(username, password, name, mobileNumber) {
 }
 // database add user function end
 
+// database score upadate quiz function 
+export async function addScore(username, right, wrong) {
+  try {
+    await fs.updateDoc(fs.doc(userRef, username), {
+      rightScore : right,
+      wrongScore : wrong,
+    });
+  } catch (error) {
+    console.log('form adding user to database: ', error);
+  }
+}
+// database score quiz function end
+
+
 // database auth function check user start
 export async function getAuth(username) {
   try {
@@ -59,5 +73,4 @@ export async function addQuiz(username, question, option01, option02, option03, 
 
 // quiz get all quiz function
 export const quizList = await fs.getDocs(quizref);
-
 // database add/view quiz function end

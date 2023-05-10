@@ -1,6 +1,7 @@
 .profile-overview {
     padding-block: 40px;
-    max-width: 600px;
+    position: relative;
+    /* max-width: 600px; */
 }
 
 .profile-overview .profile-img {
@@ -43,7 +44,8 @@
     line-height: 1.5;
 }
 .profile-overview .profile-details .user-details .quiz-details .quiz-wins .point {
-    font-size: 20px;
+    font-size: 30px;
+    text-align: center;
 }
 .profile-overview .profile-details .user-details .quiz-details .quiz-wins .score-title {
     font-size: 14px;
@@ -273,3 +275,28 @@
     background-color: #2b9348;
 }
 
+.contestbtn-container {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 40px;
+}
+.contestbtn-container a {
+    font-size: 18px;
+}
+
+.btn {
+    background-color: #36c15d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5PX;
+    font-weight: bold;
+    font-size: .83em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .4s;
+}
+.btn:hover {
+    background-color: #2b9348;
+}

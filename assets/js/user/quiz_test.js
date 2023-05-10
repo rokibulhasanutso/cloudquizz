@@ -1,7 +1,13 @@
 import { timmingFormat } from "../timmingFormat.js";
-import { getAuth, quizList } from "../firebase/database-setting.js";
+import { getAuth, quizList, addScore } from "../firebase/database-setting.js";
+import { isAuthenticated } from "../auth/auth.js";
 
 
+
+// score increment and send databae section 
+let scoreRight = 0, scoreWrong = 0, totalScore = 0;
+
+// this function get data from database
 (async function() {
     
     let data = await getAuth(localStorage.getItem('app_login_id'));
@@ -13,10 +19,19 @@ import { getAuth, quizList } from "../firebase/database-setting.js";
     document.querySelectorAll('.db_username').forEach(username => {
         username.innerHTML = data.username;
     })
-})()
 
-// score increment and send databae section 
-let scoreRight = 0, scoreWrong = 0, totalScore = 0;
+    // this condition use for check user have authenticate or not
+    // if user authenticated then use to score user database otherways not.
+    if(isAuthenticated()) {
+        scoreRight = data.rightScore === undefined ? 0 : data.rightScore;
+        scoreWrong = data.wrongScore === undefined ? 0 : data.wrongScore;
+        totalScore = scoreRight + scoreWrong;
+        document.querySelector('.score_details .right_quiz').innerText = scoreRight;
+        document.querySelector('.score_details .wrong_quiz').innerText = scoreWrong;
+        document.querySelector('.score_details .total_quiz').innerText = totalScore;
+    }
+})();
+
 const efficiencyArr = [];
 document.querySelector('.score_details .right_quiz').innerText = scoreRight;
 document.querySelector('.score_details .wrong_quiz').innerText = scoreWrong;
@@ -164,10 +179,21 @@ function randonQuizGame() {
                 })
             }
             totalScore++
+
+            // when user authenticated then score adding otherways not
+            if (isAuthenticated()) {
+                addScore(localStorage.getItem('app_login_id'), scoreRight, scoreWrong)
+                .then(() => {
+                    console.log('data send!');
+                });
+            }
+            
             document.querySelector('.score_details .total_quiz').innerText = totalScore;
             document.querySelector('.score .total_quiz').innerText = totalScore;
             allOptionContainer.forEach(element => { element.style.pointerEvents = 'none' });
+
             clearInterval(coDoTiInterval);
+
             document.querySelector('.submition-btn .skip').style.display = 'none';
             document.querySelector('.submition-btn div').style.display = 'block'; 
 
@@ -180,7 +206,6 @@ function randonQuizGame() {
 }
 randonQuizGame(); // automatic start quiz after page load
 // quiz option and currection function end
-
 
 
 var avarageArr; // this var variable declearation is use for assign before use variable
@@ -200,10 +225,7 @@ function quizEfficiency(runCountTime) {
 }
 function avarageEfi() {
     efficiencyArr.push(intPSEU);
-} 
-
-
-// quizEfficiency()
+}
 
 
 // button click functionalities or oparetions
