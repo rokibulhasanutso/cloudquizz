@@ -15,42 +15,46 @@ import { getAuth, quizList } from "../firebase/database-setting.js";
     })
 })()
 
-// quiz time counting funtion start
-// export function countDownTime(countTime){
-//     // let timeElement = document.querySelector('.time_count_down');
-//     // timeElement.innerText = timmingFormat(countTime);
-//     const countDownTime = setInterval((countTime) => {
-//         countTime--
-        
-//         if (countTime < 0) {
-//             clearInterval(countDownTime)
-//         }else{
-//             return timmingFormat(countTime);
-//         }
-//     }, 1000);
-// }
-// countDownTime(120) // for test
-// quiz time counting funtion end
- 
+// score increment and send databae section 
+let scoreRight = 0, scoreWrong = 0, totalScore = 0;
+const efficiencyArr = [];
+document.querySelector('.score_details .right_quiz').innerText = scoreRight;
+document.querySelector('.score_details .wrong_quiz').innerText = scoreWrong;
+document.querySelector('.score_details .total_quiz').innerText = totalScore;
+// score increment and send databae section end 
 
-const countDownTime = countTime => {
+
+// quiz count down time oparetions funtion
+let countTime;
+const countDownTime = count => {
     const countTimeContainer = document.querySelector('.time_count_down');
-    countTimeContainer.innerHTML = timmingFormat(countTime);
-    
+    countTimeContainer.innerHTML = timmingFormat(count); // show the fist count dwon number
+    document.querySelector('.main-content').style.borderColor = '';
+    document.querySelector('.submition-btn button').style.cssText = '';
+
+    countTime = count;
+    quizEfficiency(countTime)
     let timeIntervalID = setInterval(() => {
         countTime--
+        quizEfficiency(countTime)
+        countTimeContainer.innerText = timmingFormat(countTime);
 
-        if (countTime < 0) {
+        if(countTime <= 5 && countTime > 0) {
+            document.querySelector('.main-content').style.borderColor = 'red';
+            document.querySelector('.submition-btn button').style.cssText = `
+                pointer-events: none;
+                background-color: #2b9348;
+            `
+        } else if (countTime === 0) {
+            document.querySelector('.quiz-score-overview').style.display = 'flex';
+            document.querySelector('.quiz-score-overview .status').innerText = 'Timeout...!';
             clearInterval(timeIntervalID);
-        } else {
-            countTimeContainer.innerText = timmingFormat(countTime);
         }
     }, 1000);
 
     return timeIntervalID;
 }
-
-
+// countDownTime(15);
 
 // count down screen start
 let countDown = document.querySelector('.quiz-sart-count-down');
@@ -78,7 +82,7 @@ function randomNumber(start, end) {
 // end random number creation 
 
 // quiz option and currection function start
-let coDoTiInterval;
+let coDoTiInterval, requieQuizTime; // couse for you can acceess or stop intervel outside of randonQuizGame() function
 function randonQuizGame() {
     const randArr = [];
 
@@ -115,9 +119,11 @@ function randonQuizGame() {
                 <p>${optionsArr[randArr[3]]}</p>
             </div>
         `
-        coDoTiInterval = countDownTime(15);
-        console.log(coDoTiInterval);
-        document.querySelector('.quiz_content').innerHTML = addQuizContent;
+        requieQuizTime = 15;
+        coDoTiInterval = countDownTime(requieQuizTime); // count down time start for 15 second
+        document.querySelector('.quiz_content').innerHTML = addQuizContent; // add quiz from database
+        document.querySelector('.submition-btn').style.display = 'flex'; // submisstion button show when had quiz
+        document.querySelector('.quiz_details_content').style.display = 'flex'; // show count down time and scores
     }
 
     // quiz test function ensure that right or wrong
@@ -126,48 +132,103 @@ function randonQuizGame() {
     allOptionContainer.forEach(optionContainer => {
         optionContainer.addEventListener('click', () => {
             if (optionContainer.innerText === currectAns) {
+                scoreRight++
+                document.querySelector('.score_details .right_quiz').innerText = scoreRight;
+                document.querySelector('.score .right_quiz').innerText = scoreRight;
+                avarageEfi();
+
                 optionContainer.style.cssText = `
                     color: white;
                     background-color: #36c15d;
                     border-color: transparent;
                 `;
             } else {
+                scoreWrong++
+                document.querySelector('.score_details .wrong_quiz').innerText = scoreWrong;
+                document.querySelector('.score .wrong_quiz').innerText = scoreWrong;
+
                 optionContainer.style.cssText = `
                     color: white;
                     background-color: red;
                     border-color: transparent;
                 `;
+                allOptionContainer.forEach(element => {
+                    if (element.innerText === currectAns) {
+    
+                        element.style.cssText = `
+                            color: white;
+                            background-color: #36c15d;
+                            border-color: transparent;
+                        `;
+                    }
+                })
             }
+            totalScore++
+            document.querySelector('.score_details .total_quiz').innerText = totalScore;
+            document.querySelector('.score .total_quiz').innerText = totalScore;
+            allOptionContainer.forEach(element => { element.style.pointerEvents = 'none' });
+            clearInterval(coDoTiInterval);
+            document.querySelector('.submition-btn .skip').style.display = 'none';
+            document.querySelector('.submition-btn div').style.display = 'block'; 
 
-            allOptionContainer.forEach(element => {
-                if (element.innerText === currectAns) {
-
-                    element.style.cssText = `
-                        color: white;
-                        background-color: #36c15d;
-                        border-color: transparent;
-                    `;
-                }
-                element.style.pointerEvents = 'none';
-            })
+            document.querySelector('.quiz-score-overview .eficiency_view').innerHTML = `
+                <p>Time efficiency -> ${avarageArr === undefined ? intPSEU : avarageArr} %</p>
+                <p>Quiz efficiency -> ${((100 / totalScore) * scoreRight) === NaN ?  0 : parseInt((scoreRight * (100/totalScore)))} %</p>
+            `;
         })
     })
 }
+randonQuizGame(); // automatic start quiz after page load
 // quiz option and currection function end
 
-randonQuizGame();
 
 
+var avarageArr; // this var variable declearation is use for assign before use variable
+var intPSEU; // PSEU = per second efficiency update
+function quizEfficiency(runCountTime) {
+    intPSEU = parseInt((100 / requieQuizTime) * runCountTime);
+    if (efficiencyArr.length > 0 ) {
+        let arrSum = 0;
+        for (let arr of efficiencyArr) { 
+            arrSum += arr;
+        };
+        avarageArr = parseInt((arrSum + intPSEU) / (efficiencyArr.length + 1));
+        document.querySelector('.time_avarage span').innerText = `${avarageArr} %`;
+    } else {
+        document.querySelector('.time_avarage span').innerText = `${intPSEU} %`;
+    }
+}
+function avarageEfi() {
+    efficiencyArr.push(intPSEU);
+} 
 
 
+// quizEfficiency()
 
 
-// function afterQuizOverView() {
-//     const allOptionContainer = document.querySelectorAll('.options-content p')
-// }
-
-document.querySelector('.skip-btn button').addEventListener("click", (event)=> {
-    clearInterval(coDoTiInterval)
+// button click functionalities or oparetions
+document.querySelector('.submition-btn .skip').addEventListener("click", (event)=> {
+    clearInterval(coDoTiInterval);
     randonQuizGame();
-    console.log('clicked!')
+    // console.log('clicked!')
+})
+
+document.querySelector('.submition-btn .next').addEventListener("click", (event)=> {
+    clearInterval(coDoTiInterval);
+    document.querySelector('.submition-btn div').style.display = 'none';
+    randonQuizGame();
+    // console.log('clicked!')
+})
+
+document.querySelector('.submition-btn .close').addEventListener("click", (event)=> {
+    document.querySelector('.quiz-score-overview').style.display = 'flex';
+    document.querySelector('.quiz-score-overview .status').innerText = 'Your score overview...!';
+    document.querySelector('.time_count_down').innerText = '--:--';
+})
+
+document.querySelector('#quiz_startAgainBtn').addEventListener("click", (event)=> {
+    document.querySelector('.quiz-score-overview').style.display = 'none';
+    document.querySelector('.submition-btn div').style.display = 'none';
+    randonQuizGame();
+    // console.log('clicked!')
 })

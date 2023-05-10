@@ -45,21 +45,23 @@
     <header>
         <div class="container">
             <div class="main-header d-flex-space-between">
-                <div class="logo"><!-- logo div tag -->
-                    <div style="display: inline-block;">
-                        <span style="
-                            font-family: 'Prompt', sans-serif;
-                            color: #2b9348;
-                        ">CloudQuizz<span style="
-                            display: inline-block;
-                            width: 5px;
-                            height: 5px;
-                            margin-left: 5px;
-                            background-color: red;
-                        "></span></span>
+                <a href="../../index.html">
+                    <div class="logo"><!-- logo div tag -->
+                        <div style="display: inline-block;">
+                            <span style="
+                                font-family: 'Prompt', sans-serif;
+                                color: #2b9348;
+                            ">CloudQuizz<span style="
+                                display: inline-block;
+                                width: 5px;
+                                height: 5px;
+                                margin-left: 5px;
+                                background-color: red;
+                            "></span></span>
+                        </div>
+                        <!-- logo div tag end-->
                     </div>
-                    <!-- logo div tag end-->
-                </div>
+                </a>
     
                 <!-- when logout -->
                 <div class="nav with_out_login">
@@ -92,18 +94,18 @@
                 <div class="time_count_down">--:--</div>
                 <div class="details">
                     <div class="score_details">
-                        <p>15</p>
+                        <p class="right_quiz">0</p>
                         <span style="color: #a4a4a4;">|</span>
-                        <p>7</p>
-                        <span style="color: #a4a4a4;">|</span>
-                        <p>Total 22</p>
+                        <p class="wrong_quiz">0</p>
+                        <span style="color: #a4a4a4;">| Total </span>
+                        <p class="total_quiz">0</p>
                     </div>
-                    <div class="time_avarage">AVERAGE <span>78%</span></div>
+                    <div class="time_avarage">EFFICIENCY <span></span></div>
                 </div>
             </div>
             <!-- timming content end -->
             <div class="main-content">
-                <a href="#" class="quiz_ownership" title="Go to profile">
+                <!-- <a href="#" class="quiz_ownership" title="Go to profile">
                     <div>
                         <img src="../../assets/image/user_avater.svg" alt="owner_image">
                     </div>
@@ -123,12 +125,44 @@
                             <span>Vote 67</span>
                         </p>
                     </div>
-                </a>
+                </a> -->
+                <div class="quiz-score-overview">
+                    <p class="status"></p>
+                    <div class="eficiency_view"></div>
+                    <div class="score">
+                        <div>
+                            <p class="right_quiz" style="font-size: 22px; font-weight: 700; color: #36c15d;">0</p>
+                            <p>Right</p>
+                        </div>
+                        <div>
+                            <p class="wrong_quiz" style="font-size: 22px; font-weight: 700; color: crimson;">0</p>
+                            <p>Wrong</p>
+                        </div>
+                        <div>
+                            <p class="total_quiz" style="font-size: 22px; font-weight: 700; color: #FF6000;">0</p>
+                            <p>Total</p>
+                        </div>
+                    </div>
+                    <button class="btn" id="quiz_startAgainBtn">Start again</button>
+                </div>
+
+
 
                 <div class="quiz_content">
                     <p style="text-align: center;">Please wait ready to quiz...</p>
                 </div>
-                <div class="skip-btn"><button>Skip</button></div>
+
+
+
+                <div class="submition-btn">
+                    <button class="skip">Skip</button>
+                    <div style="display: none;">
+                        <button class="close">Close</button>
+                        <button class="next">Next</button>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
