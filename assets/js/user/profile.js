@@ -123,6 +123,9 @@ submittionBtn.addEventListener('click', () => {
         addQuiz(userid, qst, op1, op2, op3, op4)
         .then(() => {
             feedbackMsg.innerHTML = 'Add question successfully!';
+            setTimeout(() => {
+                location.reload();
+            },500)
         })
     } else {
         feedbackMsg.innerHTML = 'Please fillup all box\'s';
