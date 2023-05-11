@@ -275,6 +275,17 @@
     background-color: #2b9348;
 }
 
+.qstAddProcc {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: white;
+    border-radius: 10px;
+}
+
 .contestbtn-container {
     display: inline-block;
     position: absolute;

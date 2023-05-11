@@ -112,17 +112,24 @@ submittionBtn.addEventListener('click', () => {
     const op3 = document.querySelector('#db-op3').value;
     const op4 = document.querySelector('#db-op4').value;
 
-    submittionBtn.style.setProperty('user-select','none');
+    submittionBtn.style.cssText = `user-select: none; pointer-events: none;`;
     if (
         qst !== "" &&
         op1 !== "" &&
         op2 !== "" &&
         op3 !== "" &&
         op4 !== ""
-    ){
+    ){  
+
+        document.querySelector('.popup').innerHTML = `
+        <div class="qstAddProcc">
+            <div class="proccesing-msg">Processing your quiestion...</div>
+        </div>
+        `
+
         addQuiz(userid, qst, op1, op2, op3, op4)
         .then(() => {
-            feedbackMsg.innerHTML = 'Add question successfully!';
+            document.querySelector('.qstAddProcc .proccesing-msg').innerText = 'Add question successfully!';
             setTimeout(() => {
                 location.reload();
             },500)
