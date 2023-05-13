@@ -112,7 +112,6 @@ submittionBtn.addEventListener('click', () => {
     const op3 = document.querySelector('#db-op3').value;
     const op4 = document.querySelector('#db-op4').value;
 
-    submittionBtn.style.cssText = `user-select: none; pointer-events: none;`;
     if (
         qst !== "" &&
         op1 !== "" &&
@@ -120,7 +119,7 @@ submittionBtn.addEventListener('click', () => {
         op3 !== "" &&
         op4 !== ""
     ){  
-
+        submittionBtn.style.cssText = `user-select: none; pointer-events: none;`;
         document.querySelector('.popup').innerHTML = `
         <div class="qstAddProcc">
             <div class="proccesing-msg">Processing your quiestion...</div>
